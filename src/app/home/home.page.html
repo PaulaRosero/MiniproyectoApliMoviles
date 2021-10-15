@@ -1,20 +1,46 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-title>
-      Blank
+      Referencias
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-list class="ios list-ios hydrated">
+    <ion-list-header class="ios hydrated" >
+      Gestión de Referencias
+    </ion-list-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content>
+    <ion-item *ngFor="let booking of Bookings" class="user-list">
+      <ion-label>
+        <h4> 
+          {{booking.titulopub}}
+        </h4>
+        <h5>
+          <ion-icon name="people"></ion-icon> {{booking.autores}}
+        </h5>
+        <h5>
+          Tipo publicación: {{booking.tipopub}}
+        </h5>
+        <h5>
+          <ion-icon name="book"></ion-icon> {{booking.eventorevista}}
+        </h5>
+        <h5>
+          Doi: {{booking.doi}}
+        </h5>
+        <h5>
+          <ion-icon name="timer"></ion-icon> {{booking.anyopub}}
+        </h5>
+      </ion-label>
+
+      <div class="item-note" item-end>
+        <button ion-button clear [routerLink]="['/editar-ref/', booking.$idreferencia]">
+          <ion-icon name="create" style="zoom:2.0"></ion-icon>
+        </button>
+        <button ion-button clear (click)="deleteBooking(booking.$idreferencia)">
+          <ion-icon name="trash" style="zoom:2.0"></ion-icon>
+        </button>
+      </div>
+    </ion-item>
+  </ion-list>

@@ -11,6 +11,14 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'crear-ref',
+    loadChildren: () => import('./crear-ref/crear-ref.module').then( m => m.CrearRefPageModule)
+  },
+  {
+    path: 'editar-ref/:id',
+    loadChildren: () => import('./editar-ref/editar-ref.module').then( m => m.EditarRefPageModule)
+  },
 ];
 
 @NgModule({
